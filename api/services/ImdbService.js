@@ -7,7 +7,7 @@ module.exports = {
   findMovieById: function(imdbId){
     return imdb.getById(imdbId);
   },
-  query: function(query){
-    return imdb.getReq(query);
+  query: function(query, cb){
+    return imdb.getReq(query, cb);
   }
 };

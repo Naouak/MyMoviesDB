@@ -1,0 +1,63 @@
+<form action="/movie/create" method="post" id="createForm">
+
+  <fieldset>
+    <legend>Rechercher un film</legend>
+    <div>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div>
+      <label for="year">Année</label>
+      <input type="text" name="year" id="year">
+    </div>
+    <div>
+      <label for="imdbid">IMDB ID</label>
+      <input type="text" name="imdbid" id="imdbid">
+    </div>
+  </fieldset>
+
+  <img src="" alt="" id="imdb_poster">
+
+  <div>
+    <input type="hidden" name="imdb_id" id="imdb_id" required>
+  </div>
+
+  <button>Insérer</button>
+</form>
+
+<script type="text/javascript">
+  function checkTitleInImdb() {
+    console.log("loading...");
+
+    var url = "/movie/searchImdb?";
+    if(document.forms.createForm.title.value){
+      url+="title="+encodeURI(document.forms.createForm.title.value)+"&";
+    }
+    if(document.forms.createForm.year.value){
+      url+="year="+encodeURI(document.forms.createForm.year.value)+"&";
+    }
+    if(document.forms.createForm.imdbid.value){
+      url+="imdbid="+encodeURI(document.forms.createForm.imdbid.value)+"&";
+    }
+
+    fetch(url, {credentials: 'include'})
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+          if (!data.imdbid) {
+            return;
+          }
+          document.forms.createForm.imdb_id.value = data.imdbid;
+          document.forms.createForm.title.value = data.title;
+          document.forms.createForm.year.value = data.year;
+          document.forms.createForm.imdbid.value = data.imdbid;
+          document.getElementById("imdb_poster").src = data.poster;
+        }
+      );
+  }
+
+  document.forms.createForm.title.addEventListener("change", checkTitleInImdb);
+  document.forms.createForm.year.addEventListener("change", checkTitleInImdb);
+  document.forms.createForm.imdbid.addEventListener("change", checkTitleInImdb);
+</script>
