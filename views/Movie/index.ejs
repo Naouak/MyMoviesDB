@@ -1,0 +1,12 @@
+Movies !
+
+<% for(var i = 0; i < movies.length; i++){ %>
+  <div class="movie">
+    <h2><%=movies[i].title %> (<%=movies[i].imdb_data.year %>)</h2>
+    <img src="<%= movies[i].imdb_data.poster %>" alt="<%= movies[i].title %>">
+    <div class="plot">
+      <%= movies[i].imdb_data.plot %>
+    </div>
+  </div>
+
+<% } %>
