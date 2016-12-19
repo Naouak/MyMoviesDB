@@ -2,27 +2,35 @@
 
   <fieldset>
     <legend>Rechercher un film</legend>
-    <div>
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title">
+    <div class="form-group row">
+      <label for="title" class="col-xs-2 col-form-label">Title</label>
+      <div class="col-xs-10">
+        <input type="text" name="title" id="title" class="form-control">
+      </div>
     </div>
-    <div>
-      <label for="year">Année</label>
-      <input type="text" name="year" id="year">
+    <div class="form-group row">
+      <label for="year" class="col-xs-2 col-form-label">Année</label>
+      <div class="col-xs-10">
+        <input type="text" name="year" id="year" class="form-control">
+      </div>
     </div>
-    <div>
-      <label for="imdbid">IMDB ID</label>
-      <input type="text" name="imdbid" id="imdbid">
+    <div class="form-group row">
+      <label for="imdbid" class="col-xs-2 col-form-label">IMDB ID</label>
+      <div class="col-xs-10">
+        <input type="text" name="imdbid" id="imdbid" class="form-control">
+      </div>
     </div>
   </fieldset>
 
-  <img src="" alt="" id="imdb_poster">
+  <div>
+    <img src="" alt="" id="imdb_poster">
+  </div>
 
   <div>
     <input type="hidden" name="imdb_id" id="imdb_id" required>
   </div>
 
-  <button>Insérer</button>
+  <button class="btn btn-primary offset-xs-2">Insérer</button>
 </form>
 
 <script type="text/javascript">

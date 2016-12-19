@@ -1,12 +1,7 @@
-Movies !
-
-<% for(var i = 0; i < movies.length; i++){ %>
-  <div class="movie">
-    <h2><%=movies[i].title %> (<%=movies[i].imdb_data.year %>)</h2>
-    <img src="<%= movies[i].imdb_data.poster %>" alt="<%= movies[i].title %>">
-    <div class="plot">
-      <%= movies[i].imdb_data.plot %>
-    </div>
-  </div>
-
-<% } %>
+<h1>Movies</h1>
+<div class="card-deck" style="justify-content: space-between;">
+  <% for(var i = 0; i < movies.length; i++){ %>
+  <% movie = movies[i]; %>
+  <%- include include/movie.ejs %>
+  <% } %>
+</div>
