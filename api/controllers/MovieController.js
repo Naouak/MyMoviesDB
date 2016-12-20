@@ -29,6 +29,21 @@ module.exports = {
         }
         return res.json(movie);
       });
+  },
+  create: function (req, res){
+    if(req.body){
+      if(!req.body.imdb_id){
+        return res.badRequest('IMDB ID is required to create a movie.');
+      }
+      return Movie.create(req.body).exec(function(err, records){
+        if(err){
+          return res.serverError(err);
+        }
+        
+        return res.redirect("/");
+      });
+    }
+    res.view();
   }
 };
 
