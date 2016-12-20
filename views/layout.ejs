@@ -43,6 +43,13 @@
             <a href="/movie/create" class="nav-link">Add a movie</a>
           </li>
         </ul>
+        <% if(typeof loggedIn != 'undefined' && loggedIn){ %>
+        <ul class="nav navbar-nav float-xs-right">
+          <li class="nav-item">
+            <a href="/user/logout" class="nav-link">Log out</a>
+          </li>
+        </ul>
+        <% } %>
       </div>
     </nav>
 
