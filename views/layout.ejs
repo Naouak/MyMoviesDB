@@ -46,6 +46,14 @@
       </div>
     </nav>
     <div class="container" style="min-height: calc(100vh - 54px - 16px); padding-top: 20px;">
+      <% if(locals.messages){ %>
+        <% for(var i = 0; i < messages.length; i++){ %>
+          <div class="alert alert-<%=messages[i].type||"info"%>">
+            <%=messages[i].message%>
+          </div>
+        <% } %>
+      <% } %>
+
       <%- body %>
     </div>
 

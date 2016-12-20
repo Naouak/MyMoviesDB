@@ -49,10 +49,9 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   
-  '*': 'sessionAuth',
+  '*': ['flash','sessionAuth'],
   UserController: {
-    '*': 'sessionAuth',
-    login: true,
-    signup: true
+    login: ['flash'],
+    signup: ['flash']
   }
 };
