@@ -29,9 +29,7 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.authenticated = false;
-    
     FlashService.addFlash(req, "You are logged out", "success");
-  
     res.redirect("/");
   },
   signup: (req, res) => {
