@@ -45,11 +45,12 @@
         </ul>
       </div>
     </nav>
+
     <div class="container" style="min-height: calc(100vh - 54px - 16px); padding-top: 20px;">
-      <% if(locals.messages){ %>
-        <% for(var i = 0; i < messages.length; i++){ %>
-          <div class="alert alert-<%=messages[i].type||"info"%>">
-            <%=messages[i].message%>
+      <% if(typeof flashes != 'undefined'){ %>
+        <% for(var i = 0; i < flashes.length; i++){ %>
+          <div class="alert alert-<%=flashes[i].type||"info"%>">
+            <%=flashes[i].message%>
           </div>
         <% } %>
       <% } %>

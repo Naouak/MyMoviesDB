@@ -1,7 +1,8 @@
 module.exports = {
-  addFlash: function(req, message){
+  addFlash: function(req, message, type){
     req.session.flashes.push({
-      message: message
+      message: message,
+      type: type || "info"
     });
   }
 };
