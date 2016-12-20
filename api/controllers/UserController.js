@@ -18,6 +18,7 @@ module.exports = {
     res.login({name: req.body.name, password: req.body.password}, function(){
       //Success
       req.session.authenticated = true;
+      FlashService.addFlash(req, "You are logged in", "success");
       res.redirect("/");
     }, function(err){
       //Fail
@@ -28,6 +29,9 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.authenticated = false;
+    
+    FlashService.addFlash(req, "You are logged out", "success");
+  
     res.redirect("/");
   },
   signup: (req, res) => {
@@ -39,8 +43,11 @@ module.exports = {
       password: req.body.password
     }).exec(function(err, user){
       if(err){
+        FlashService.addFlash(req, "Could not create your account", "danger");
         return res.view("User/login");
       }
+      
+      FlashService.addFlash(req, "Account created. You are now logged in.", "success");
       req.session.authenticated = true;
       return res.redirect("/");
     });

@@ -37,9 +37,11 @@ module.exports = {
       }
       return Movie.create(req.body).exec(function(err, records){
         if(err){
-          return res.serverError(err);
+          FlashService.addFlash(req, err.message, "danger");
+          return res.view();
         }
-        
+  
+        FlashService.addFlash(req, records.title+" was added to the database.", "success");
         return res.redirect("/");
       });
     }
