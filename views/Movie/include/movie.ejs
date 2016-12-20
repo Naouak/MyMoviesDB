@@ -1,7 +1,8 @@
-<div class="card" style="min-width: 30%; max-width: 30%; margin-bottom: 0.75rem;">
-  <img src="<%= movie.imdb_data.poster %>" alt="<%= movie.title %>" class="card-img-top" style="width: 100%">
+<div class="card" style="min-width: 22%; max-width: 22%; margin-bottom: 0.75rem;">
+  <div class="card-img-top"
+       style="width: 100%;padding: 145% 0 0 0;overflow:hidden; position: relative; background: url(<%= movie.imdb_data.poster %>); background-size: cover">
+  </div>
   <div class="card-block">
-    <h4 class="card-title"><%=movie.title %> (<%=movie.imdb_data.year %>)</h4>
-    <p class="card-text"><%= movie.imdb_data.plot %></p>
+    <h4 class="card-title"><%= movie.title %> (<%= movie.imdb_data.year %>)</h4>
   </div>
 </div>
