@@ -7,12 +7,19 @@
 
 module.exports = {
   index: function (req, res) {
-    Movie.find().exec(function (err, movies) {
+    Movie.find()
+      .populate('watches',{
+        where: {
+          watchedBy: req.session.userId
+        }
+      })
+      .exec(function (err, movies) {
       if (err) {
         return res.serverError(err);
       }
       res.view({
-        movies: movies
+        movies: movies,
+        user: req.session.userId
       });
     });
   },

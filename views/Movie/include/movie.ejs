@@ -1,8 +1,19 @@
-<div class="card" style="min-width: 22%; max-width: 22%; margin-bottom: 0.75rem;">
+<div class="card" style="min-width: 30%; max-width: 30%; margin-bottom: 0.75rem;">
   <div class="card-img-top"
        style="width: 100%;padding: 145% 0 0 0;overflow:hidden; position: relative; background: url(<%= movie.imdb_data.poster %>); background-size: cover">
   </div>
   <div class="card-block">
     <h4 class="card-title"><%= movie.title %> (<%= movie.imdb_data.year %>)</h4>
+
+    <% if(movie.watches.length){ %>
+      Saw it on <%=new Date(movie.watches[0].watchDate).toDateString()%>
+    <% } else { %>
+      <form action="/watchHistory/add" method="post">
+        <input type="hidden" name="movie" value="<%= movie.id %>">
+        <input class="form-control" type="date" name="watchDate" value="<%=(new Date()).toISOString().substring(0,10) %>">
+        <button class="btn btn-primary" style="width: 100%;">Saw it</button>
+      </form>
+    <% } %>
+
   </div>
 </div>

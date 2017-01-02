@@ -15,9 +15,10 @@ module.exports = {
       res.view();
       return;
     }
-    res.login({name: req.body.name, password: req.body.password}, function(){
+    res.login({name: req.body.name, password: req.body.password}, function(user){
       //Success
       req.session.authenticated = true;
+      req.session.userId = user.id;
       FlashService.addFlash(req, "You are logged in", "success");
       res.redirect("/");
     }, function(err){
@@ -47,6 +48,7 @@ module.exports = {
       
       FlashService.addFlash(req, "Account created. You are now logged in.", "success");
       req.session.authenticated = true;
+      req.session.userId = user.id;
       return res.redirect("/");
     });
   }

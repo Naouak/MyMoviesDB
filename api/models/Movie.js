@@ -18,6 +18,11 @@ module.exports = {
     },
     imdb_data: {
       type: 'json'
+    },
+    watches: {
+      collection: 'watchhistory',
+      via: 'movie',
+      dominant: true
     }
   },
   beforeCreate: function (attrs, cb) {
